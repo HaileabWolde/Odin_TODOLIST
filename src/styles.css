@@ -1,4 +1,32 @@
 /* styles.css */
-body {
-  background-color: rebeccapurple;
+html, body{
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+  }
+header{
+     position: sticky;
+    top: 0px;
+    background-color: #fffeff;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-family: "Roboto", serif;
+    font-weight: 800;
+    height: 10vh;
+     border-bottom: 5px solid rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+}
+#Container{
+    display: grid;
+    resize: both;
+    height: 90vh;
+    grid-template-columns: 30% 70%;
+}
+#ProjectList{
+    background-color: #fff;
+    border-right: 6px solid rgba(0, 0, 0, 0.1);
+   
+}
+#TaskList{
+    background-color: #e1e7ef;
 }
