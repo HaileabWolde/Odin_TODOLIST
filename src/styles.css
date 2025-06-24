@@ -23,6 +23,7 @@ header{
     grid-template-columns: 30% 70%;
 }
 #ProjectList{
+    padding: 50px;
     background-color: #fff;
     border-right: 6px solid rgba(0, 0, 0, 0.1);
    
