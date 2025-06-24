@@ -1,0 +1,21 @@
+[
+    {
+        "id": 1,
+        "name" : "ketifo",
+        "description": "A delicious dish made with a blend of spices and herbs.",
+        "price": 300
+    },
+    {   
+        "id": 2,
+        "name": "Tibes",
+        "description": "A fried Chicken",
+        "price": 500
+        
+    }, 
+    {
+        "id": 3,
+        "name": "Raw Meat",
+        "description": "A raw Beef Meat",
+        "price": 1000
+    }
+]
