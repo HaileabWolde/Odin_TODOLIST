@@ -9,7 +9,8 @@ const EachProject = (project) => {
             <h3 class="dialog-title">Add Task</h3>
             <label for="taskName">Task Name:</label>
             <input type="text" id="taskName" name="taskName" required>
-            <button type="submit" class="dialog-submit">Add Task</button>`;
+            <input type="date">
+            <button type="submit" class="dialog-submit" id="AddTask">Add Task</button>`;
     // Create a header for the project name
     const projectHeader = document.createElement('h2');
     projectHeader.textContent = project.name.trim(); // Trim whitespace from the project name
@@ -32,6 +33,25 @@ const EachProject = (project) => {
     });
     
     TaskList.appendChild(addTaskButton);
+    // Add event listener for the dialog form submission
+    const dialogForm = document.querySelector('.dialog-form');
+    dialogForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const taskName = document.getElementById('taskName').value.trim(); // Get the task name and trim whitespace
+        if (taskName) {
+            const task = {
+                id: Date.now(), // Unique ID based on current timestamp
+                name: taskName,
+            };
+            project.tasks.push(task); // Add the new task to the project
+            const taskItem = document.createElement('div');
+            taskItem.textContent = task.name; // Display the new task
+            taskItem.id = task.id; // Set the ID of the task item
+            TaskList.appendChild(taskItem);
+            document.getElementById('taskName').value = ''; // Clear the input field
+            dialog.close(); // Close the dialog after adding the task
+        }
+    });
 };
 export default EachProject;
 // This function is intended to handle the display of each project in the UI

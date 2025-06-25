@@ -32,6 +32,12 @@ function displayAllProjects(project) {
         if(AllProjects.length > 0) {
             AllProjects.map((project)=> displayAllProjects(project));
         }
+        const Today = document.getElementById("Today");
+        Today.addEventListener("click", () => {
+          project.tasks.forEach(task => {
+            console.log(task.name); // Log each task's name to the console
+          })
+        })
         ProjectList.removeChild(newDiv); // Remove the form after adding the project
     }
 function AddEventListener(newDiv){
