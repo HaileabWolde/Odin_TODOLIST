@@ -1,11 +1,14 @@
-
+import EachProject from "./EachProject";
 const ProjectList = document.getElementById("ProjectList");
 const ProjectListFirstChild = ProjectList.firstChild
 // This is the global array to hold all projects
 function displayAllProjects(project) {
     const projectItem = document.createElement('div');
-    projectItem.classList.add('project-item');
-    projectItem.textContent = project.name;
+    projectItem.textContent = project.name.trim(); // Trim whitespace from the project name
+    projectItem.id = project.id; // Set the ID of the project item
+    projectItem.addEventListener("click", () => {
+        EachProject(project); // Call the EachProject function with the project object
+    });
     ProjectList.insertBefore(projectItem, ProjectListFirstChild);
     // This function can be used to display each project in the UI
     const AddProject = document.createElement('button');
@@ -30,9 +33,18 @@ function displayAllProjects(project) {
             AllProjects.map((project)=> displayAllProjects(project));
         }
         ProjectList.removeChild(newDiv); // Remove the form after adding the project
-        console.log(`Project "${name}" created!`);
-        console.log(AllProjects);
     }
+function AddEventListener(newDiv){
+// Add event listener for form submission
+    const projectForm = document.getElementById('project-form');
+    projectForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const projectName = document.getElementById('project-name').value.trim(); // Get the project name and trim whitespace
+        CreateProject(projectName,newDiv); // Create a new project with the provided name
+        // Here you can add logic to actually save the project
+        projectForm.reset(); // Reset the form after submission
+    });
+}
 const AddingProject = (function (){
      const ProjectList = document.getElementById("ProjectList");
     const newDiv = document.createElement('div');
@@ -47,18 +59,8 @@ const AddingProject = (function (){
             <button type="submit">Add</button>
         </form>
     `;
-
     // Append the new project form to the ProjectList
     ProjectList.append(newDiv);
-
-    // Add event listener for form submission
-    const projectForm = document.getElementById('project-form');
-    projectForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const projectName = document.getElementById('project-name').value;
-        CreateProject(projectName,newDiv); // Create a new project with the provided name
-        // Here you can add logic to actually save the project
-        projectForm.reset(); // Reset the form after submission
-    });
+    AddEventListener(newDiv); // Call the function to add event listeners
 })
 export default AddingProject;

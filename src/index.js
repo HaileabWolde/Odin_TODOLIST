@@ -6,4 +6,3 @@ AddProject.addEventListener("click", () => {
     AddingProject();
     ProjectList.removeChild(AddProject);
 });
-console.log("Starting Odin Restaurant...");
