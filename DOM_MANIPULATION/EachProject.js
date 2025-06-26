@@ -9,7 +9,7 @@ const EachProject = (project) => {
             <h3 class="dialog-title">Add Task</h3>
             <label for="taskName">Task Name:</label>
             <input type="text" id="taskName" name="taskName" required>
-            <input type="date">
+            <input type="date" id="dueDate" name="dueDate">
             <button type="submit" class="dialog-submit" id="AddTask">Add Task</button>`;
     // Create a header for the project name
     const projectHeader = document.createElement('h2');
@@ -38,13 +38,16 @@ const EachProject = (project) => {
     dialogForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const taskName = document.getElementById('taskName').value.trim(); // Get the task name and trim whitespace
+        const dueDate = document.getElementById('dueDate').value; // Get the due date
         if (taskName) {
             const task = {
                 id: Date.now(), // Unique ID based on current timestamp
                 name: taskName,
+                dueDate: dueDate // Store the due date
             };
             project.tasks.push(task); // Add the new task to the project
             const taskItem = document.createElement('div');
+            console.log(task);
             taskItem.textContent = task.name; // Display the new task
             taskItem.id = task.id; // Set the ID of the task item
             TaskList.appendChild(taskItem);
