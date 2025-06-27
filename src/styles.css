@@ -13,8 +13,8 @@ header{
     text-align: center;
     font-family: "Roboto", serif;
     font-weight: 800;
-    height: 10vh;
-     border-bottom: 5px solid rgba(0, 0, 0, 0.2); /* Soft shadow effect */
+    height: 5vh;
+     border-bottom: 4px solid rgba(0, 0, 0, 0.2); /* Soft shadow effect */
 }
 #Container{
     display: grid;

@@ -5,7 +5,7 @@ function Weekly(){
     const formattedDate = format(currentDate, 'yyyy-MM-dd');
     const weeklyTask = AllProjects.map((project)=> {
          const WeeklyTasked = project.tasks.filter(task => {
-            for (let i = 1; i <= 7; i++){
+            for (let i = 0; i < 7; i++){
                const futureDate = addDays(formattedDate, i);
                const futureDateFormatted = format(futureDate, 'yyyy-MM-dd');
                 // console.log(futureDateFormatted);
