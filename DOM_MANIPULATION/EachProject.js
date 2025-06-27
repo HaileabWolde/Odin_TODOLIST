@@ -47,7 +47,7 @@ const EachProject = (project) => {
             };
             project.tasks.push(task); // Add the new task to the project
             const taskItem = document.createElement('div');
-            console.log(task);
+        
             taskItem.textContent = task.name; // Display the new task
             taskItem.id = task.id; // Set the ID of the task item
             TaskList.appendChild(taskItem);
