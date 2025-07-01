@@ -1,0 +1,37 @@
+input{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    outline: none;
+    width: 90%;
+    border: 2px solid #ccc;
+    margin-bottom: 1rem;
+}
+#adding-project{
+    width: 100%;
+}
+#adding-project>form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+     
+}
+.buttonDiv{
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+}
+.buttonDiv>button{
+    width: 30%;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4CAF50; /* Green */
+    color: white;
+    font-family: "Roboto", serif;
+    cursor: pointer;
+}

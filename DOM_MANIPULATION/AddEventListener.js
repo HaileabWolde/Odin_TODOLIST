@@ -3,7 +3,7 @@ import TodayTask from "../Today.js";
 import Weekly  from "../src/Weekly.js";
 import AllProjects from "../src/ProjectStore.js"; // Import the ProjectStore to manage projects
 // This module handles the addition of a new project form to the project list.
-const ProjectList = document.getElementById("ProjectList");
+const ProjectList = document.getElementById("ProjectListHeader");
 function CreateProject(name, newDiv) {
         const project = {
             id: Date.now(), // Unique ID based on current timestamp

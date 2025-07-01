@@ -1,10 +1,12 @@
 import EachProject from "./EachProject";
 import AddingProject from "./Adding Project";
-const ProjectList = document.getElementById("ProjectList");
-const ProjectListFirstChild = ProjectList.firstChild
+import '../css_files/EachProject.css';
+const ProjectList = document.getElementById("ProjectListHeader");
+const ProjectListFirstChild = ProjectList.childNodes[2]; // Get the first child of ProjectList
 function displayAllProjects(project) {
     const projectItem = document.createElement('div');
     projectItem.textContent = project.name.trim(); // Trim whitespace from the project name
+    projectItem.classList.add('project-item'); // Add a class for styling
     projectItem.id = project.id; // Set the ID of the project item
     projectItem.addEventListener("click", () => {
         EachProject(project); // Call the EachProject function with the project object
