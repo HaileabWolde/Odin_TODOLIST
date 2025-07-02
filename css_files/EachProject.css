@@ -97,7 +97,6 @@ dialog>form>input[type="date"]{
     border-radius: 12px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     padding: 30px 80px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 80%;
     margin-bottom: 20px;
      display: flex;

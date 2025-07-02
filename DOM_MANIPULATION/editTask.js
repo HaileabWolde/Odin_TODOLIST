@@ -11,11 +11,11 @@ const editTask = (Task, project, allTasks) => {
                     <h2>Priority</h2>
                     <div class="priority-options">
                         <label for="low">Low</label>
-                        <input type="radio" id="low" name="priority" value="low" ${Task.priority === 'low' ? 'checked' : ''}>
+                        <input type="radio" id="low" name="priorityOptions" value="low" ${Task.priority === 'low' ? 'checked' : ''}>
                         <label for="medium">Medium</label>
-                        <input type="radio" id="medium" name="priority" value="medium" ${Task.priority === 'medium' ? 'checked' : ''}>
+                        <input type="radio" id="medium" name="priorityOptions" value="medium" ${Task.priority === 'medium' ? 'checked' : ''}>
                         <label for="high">High</label>
-                        <input type="radio" id="high" name="priority" value="high" ${Task.priority === 'high' ? 'checked' : ''}>
+                        <input type="radio" id="high" name="priorityOptions" value="high" ${Task.priority === 'high' ? 'checked' : ''}>
                     </div>
                     <button type="submit" class="dialog-submit" id="saveChanges">Save Changes</button>
                 </div>
@@ -42,16 +42,17 @@ const editTask = (Task, project, allTasks) => {
             id: Task.id,
             name: document.getElementById("editTaskName").value.trim(),
             dueDate: document.getElementById("editDueDate").value,
-            priority: document.querySelector('input[name="priority"]').value
+           priority: document.querySelector('input[name="priorityOptions"]:checked').value
         };
-        console.log(updatedTask);
+       
         // Update the project task list
         project.tasks = project.tasks.map(task =>
             task.id === updatedTask.id ? updatedTask : task
         );
-
+        console.log(updatedTask);
         // Update DOM elements
         allTasks.forEach(taskItem => {
+           
             if (parseInt(taskItem.id) === updatedTask.id) {
                 taskItem.querySelector('.task-name').textContent = updatedTask.name;
                 taskItem.querySelector('.task-due-date').textContent =
@@ -59,11 +60,12 @@ const editTask = (Task, project, allTasks) => {
 
                 // Update border style based on priority
                 if (updatedTask.priority === 'low') {
-                    taskItem.style.border = '2px solid green';
+                    document.getElementById(taskItem.id).style.border = '2px solid green';
                 } else if (updatedTask.priority === 'medium') {
-                    taskItem.style.border = '2px solid orange';
+                    document.getElementById(taskItem.id).style.border = '2px solid orange';
                 } else if (updatedTask.priority === 'high') {
-                    taskItem.style.border = '2px solid red';
+                    document.getElementById(taskItem.id).style.border = '2px solid red';
+                    
                 }
             }
         });
