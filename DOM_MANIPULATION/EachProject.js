@@ -1,4 +1,4 @@
-import { add } from 'date-fns';
+import editTask from './editTask';
 import '../css_files/EachProject.css'; // Importing the CSS file for styling
 const TaskList = document.getElementById("TaskList");
 const TaskListSecondChild = TaskList.querySelector("AddTaskButton")
@@ -9,8 +9,8 @@ const EachProject = (project) => {
     `<dialog id="dialog" class="dialog">
         <form method="dialog" class="dialog-form">
             <h3 class="dialog-title">Add Task</h3>
-            <input type="text" id="taskName" name="taskName" placeholder="Add A Task" required>
-            <input type="date" id="dueDate" name="dueDate">
+            <input type="text" class = "task-name" id="taskName" name="taskName" placeholder="Add A Task" required>
+            <input type="date" class = "task-due-date" id="dueDate" name="dueDate">
             <div class="dialog-priority">
                 <h2>Priority</h2>
                 <div class="priority-options">
@@ -85,8 +85,15 @@ const EachProject = (project) => {
             };
             project.tasks.push(task); // Add the new task to the project
             const taskItem = document.createElement('div');
-        
-            taskItem.textContent = task.name; // Display the new task
+            taskItem.innerHTML = `
+                <span class="task-name">${task.name}</span>
+                <div class="task-details">
+                <span class="task-due-date">${task.dueDate ? `Due: ${new Date(task.dueDate).toLocaleDateString()}` : 'No due date'}</span>
+                <i class="fas fa-edit"></i>
+               <i class="fa-solid fa-trash"></i>
+                </div>
+                `
+          
             taskItem.id = task.id; // Set the ID of the task item
             if(task.priority === 'low') {
                 taskItem.style.border = '2px solid green'; // Set background color for low priority
@@ -98,6 +105,13 @@ const EachProject = (project) => {
                 taskItem.style.border = '2px solid red'; // Set background color for high priority
             }
             taskItem.classList.add('task-item'); // Add a class for styling
+            // Editing Each Task
+            const editIcon = taskItem.querySelector('.fa-edit');
+            editIcon.addEventListener('click', () => {
+                   const allTasks = document.querySelectorAll(".task-item"); // Now will return updated NodeList
+    
+                editTask(task, project, allTasks); // Call the editTask function with the task object
+            });
             TaskList.insertBefore(taskItem, TaskListSecondChild); // Insert the new task before the second child
             document.getElementById('taskName').value = ''; // Clear the input field
             dialog.close(); // Close the dialog after adding the task

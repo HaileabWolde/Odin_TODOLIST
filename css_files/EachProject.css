@@ -100,6 +100,16 @@ dialog>form>input[type="date"]{
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 80%;
     margin-bottom: 20px;
+     display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-details>i {
+    cursor: pointer;
+    color: #4CAF50;
+    font-size: 1.2rem;
+    transition: color 0.3s ease;
 }
 .dialog-form>button.dialog-close {
     background-color: #f44336;
