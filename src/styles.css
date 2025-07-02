@@ -81,3 +81,31 @@ header{
     cursor: pointer;
     width: 20%;
 }
+#deleteDialog{
+    height: 25%;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.buttonClass{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.buttonClass>button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    font-family: "Roboto", serif;
+    cursor: pointer;
+    width: 40%;
+}
+.yesButton{
+background-color: #4CAF50; /* Green */
+} 
+.noButton{
+   background-color:  #f44336;
+}

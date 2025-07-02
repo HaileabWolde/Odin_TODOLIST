@@ -1,4 +1,5 @@
 import { addDays, format } from "date-fns";
+import '../css_files/Today.css';
 import AllProjects from "./ProjectStore";
 function Weekly(){
     const currentDate = new Date();
@@ -27,8 +28,20 @@ function Weekly(){
    weeklyTask.forEach((projectTasks) => {
        projectTasks.forEach((task) => {
            const taskItem = document.createElement("div");
-           taskItem.textContent = task.name.trim(); // Trim whitespace from the task name
+           taskItem.className = "Today_task";
+           taskItem.innerHTML = `
+                <h3>${task.name}</h3>
+                <p>Due:${task.dueDate}</p>
+            `;
            taskItem.id = task.id; // Set the ID of the task item
+             // Apply priority styling
+            if (task.priority === 'low') {
+                taskItem.style.border = '2px solid green';
+            } else if (task.priority === 'medium') {
+                taskItem.style.border = '2px solid orange';
+            } else if (task.priority === 'high') {
+                taskItem.style.border = '2px solid red';
+            }
            weeklyContainer.appendChild(taskItem);
        });
    })

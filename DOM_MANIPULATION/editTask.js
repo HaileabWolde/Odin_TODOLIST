@@ -49,7 +49,7 @@ const editTask = (Task, project, allTasks) => {
         project.tasks = project.tasks.map(task =>
             task.id === updatedTask.id ? updatedTask : task
         );
-        console.log(updatedTask);
+       
         // Update DOM elements
         allTasks.forEach(taskItem => {
            

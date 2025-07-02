@@ -1,4 +1,5 @@
 import editTask from './editTask';
+import deleteTask from './trashTask';
 import '../css_files/EachProject.css'; // Importing the CSS file for styling
 const TaskList = document.getElementById("TaskList");
 const TaskListSecondChild = TaskList.querySelector("AddTaskButton")
@@ -40,9 +41,22 @@ const EachProject = (project) => {
     // Display each task in the project
     project.tasks.forEach(task => {
         const taskItem = document.createElement('div');
-        taskItem.textContent = task.name.trim(); // Trim whitespace from the task name
+        taskItem.innerHTML =`
+         <span class="task-name">${task.name}</span>
+                <div class="task-details">
+                <span class="task-due-date">${task.dueDate ? `Due: ${new Date(task.dueDate).toLocaleDateString()}` : 'No due date'}</span>
+                <i class="fas fa-edit"></i>
+               <i class="fa-solid fa-trash"></i>
+                </div>
+        `
         taskItem.id = task.id; // Set the ID of the task item
           taskItem.classList.add('task-item'); // Add a class for styling
+          // Editing Each Task
+            const editIcon = taskItem.querySelector('.fa-edit');
+            editIcon.addEventListener('click', () => {
+                   const allTasks = document.querySelectorAll(".task-item"); // Now will return updated NodeList
+                   editTask(task, project, allTasks); // Call the editTask function with the task object
+            });
         TaskList.insertBefore(taskItem, TaskListSecondChild); // Insert the task item before the second child
         if(task.priority === 'low') {
             taskItem.style.border = '2px solid green'; // Set border color for low priority
@@ -54,7 +68,6 @@ const EachProject = (project) => {
             taskItem.style.border = '2px solid red'; // Set border color for high priority
         }
     });
-
     // Optionally, you can add a button to add new tasks to this project
     const addTaskButton = document.createElement('button');
     addTaskButton.id = "AddTaskButton"; // Set an ID for the button
@@ -112,6 +125,11 @@ const EachProject = (project) => {
     
                 editTask(task, project, allTasks); // Call the editTask function with the task object
             });
+            const deleteIcon = taskItem.querySelector('.fa-trash')
+            deleteIcon.addEventListener('click', ()=>{
+                const allTasks = document.querySelectorAll(".task-item"); // Now will return updated NodeList
+                 deleteTask(task, project, allTasks);
+            })
             TaskList.insertBefore(taskItem, TaskListSecondChild); // Insert the new task before the second child
             document.getElementById('taskName').value = ''; // Clear the input field
             dialog.close(); // Close the dialog after adding the task

@@ -1,5 +1,5 @@
 import { format } from 'date-fns';
-
+import './css_files/Today.css';
 function TodayTask(AllProjects) {
     const currentDate = new Date();
     const formattedDate = format(currentDate, 'yyyy-MM-dd');
@@ -19,12 +19,19 @@ function TodayTask(AllProjects) {
     todayTasks.forEach(tasks => {
         tasks.forEach(task => {
             const taskElement = document.createElement("div");
-            taskElement.className = "task";
+            taskElement.className = "Today_task";
             taskElement.innerHTML = `
                 <h3>${task.name}</h3>
-                <p>Due: ${task.dueDate}</p>
-                <p>${task.description || ""}</p>
+                <p>Due:${task.dueDate}</p>
             `;
+            // Apply priority styling
+            if (task.priority === 'low') {
+                taskElement.style.border = '2px solid green';
+            } else if (task.priority === 'medium') {
+                taskElement.style.border = '2px solid orange';
+            } else if (task.priority === 'high') {
+                taskElement.style.border = '2px solid red';
+            }
             todayContainer.appendChild(taskElement);
         });
     });
