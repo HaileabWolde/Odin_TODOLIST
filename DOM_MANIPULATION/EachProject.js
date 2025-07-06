@@ -1,3 +1,4 @@
+import AllProjects from '../src/ProjectStore';
 import editTask from './editTask';
 import deleteTask from './trashTask';
 import '../css_files/EachProject.css'; // Importing the CSS file for styling
@@ -97,6 +98,8 @@ const EachProject = (project) => {
                 priority: priority ? priority.value : 'low' // Default to 'low' if no priority is selected
             };
             project.tasks.push(task); // Add the new task to the project
+             localStorage.setItem("projects", JSON.stringify(AllProjects)); // Save the project to localStorage
+             
             const taskItem = document.createElement('div');
             taskItem.innerHTML = `
                 <span class="task-name">${task.name}</span>

@@ -11,6 +11,7 @@ function displayAllProjects(project) {
     projectItem.addEventListener("click", () => {
         EachProject(project); // Call the EachProject function with the project object
     });
+   
     ProjectList.insertBefore(projectItem, ProjectListFirstChild);
     // This function can be used to display each project in the UI
     if (!document.getElementById("AddProject")) {

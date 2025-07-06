@@ -1,3 +1,4 @@
+import AllProjects from '../src/ProjectStore'; // Import the ProjectStore to manage projects
 const editTask = (Task, project, allTasks) => { 
    // Create and inject the dialog but DO NOT overwrite the TaskList
     const dialogWrapper = document.createElement('div');
@@ -49,7 +50,7 @@ const editTask = (Task, project, allTasks) => {
         project.tasks = project.tasks.map(task =>
             task.id === updatedTask.id ? updatedTask : task
         );
-       
+          localStorage.setItem("projects", JSON.stringify(AllProjects)); // Save the project to localStorage
         // Update DOM elements
         allTasks.forEach(taskItem => {
            
