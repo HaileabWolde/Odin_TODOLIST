@@ -125,11 +125,12 @@ const EachProject = (project) => {
             const editIcon = taskItem.querySelector('.fa-edit');
             editIcon.addEventListener('click', () => {
                    const allTasks = document.querySelectorAll(".task-item"); // Now will return updated NodeList
-    
+             
                 editTask(task, project, allTasks); // Call the editTask function with the task object
             });
             const deleteIcon = taskItem.querySelector('.fa-trash')
             deleteIcon.addEventListener('click', ()=>{
+               
                 const allTasks = document.querySelectorAll(".task-item"); // Now will return updated NodeList
                  deleteTask(task, project, allTasks);
             })
