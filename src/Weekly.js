@@ -23,16 +23,18 @@ function Weekly(){
         })
         return WeeklyTasked;
     })
+  
    const weeklyContainer = document.getElementById("TaskList");
    weeklyContainer.innerHTML = ""; // Clear previous tasks
    weeklyTask.forEach((projectTasks) => {
        projectTasks.forEach((task) => {
-           const taskItem = document.createElement("div");
-           taskItem.className = "Today_task";
-           taskItem.innerHTML = `
-                <h3>${task.name}</h3>
-                <p>Due:${task.dueDate}</p>
-            `;
+      
+            const taskItem = document.createElement("div")
+            taskItem.className = "Today_task"
+            taskItem.innerHTML = `
+            <h3>${task.name}</h3>
+            <p>Due:${task.dueDate}</p>
+            `
            taskItem.id = task.id; // Set the ID of the task item
              // Apply priority styling
             if (task.priority === 'low') {
